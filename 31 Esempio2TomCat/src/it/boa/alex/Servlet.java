@@ -40,7 +40,11 @@ public class Servlet extends HttpServlet {
 			reqDisp.forward(request, response);
 		}
 		else{
-			response.sendRedirect("login.html");
+			RequestDispatcher reqDisp = request.getRequestDispatcher("login.html");
+			PrintWriter pr = response.getWriter();
+			pr.println("Username o password errate!");
+			reqDisp.include(request, response);
+			//response.sendRedirect("login.html");
 		}
 	}
 }
