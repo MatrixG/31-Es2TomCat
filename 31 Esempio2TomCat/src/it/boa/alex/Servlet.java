@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,10 +31,16 @@ public class Servlet extends HttpServlet {
 
 		response.setContentType("text/html");
 		
+		
+		
 		String pass = request.getParameter("password");
 		
 		if (pass.equals("123")){
-			response.sendRedirect("benvenuto.html");
+			RequestDispatcher reqDisp = request.getRequestDispatcher("Servlet2");
+			reqDisp.forward(request, response);
+		}
+		else{
+			response.sendRedirect("login.html");
 		}
 	}
 }
