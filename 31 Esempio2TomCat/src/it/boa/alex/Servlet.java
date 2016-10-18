@@ -36,8 +36,13 @@ public class Servlet extends HttpServlet {
 		String pass = request.getParameter("password");
 		
 		if (pass.equals("123")){
+			
+			PrintWriter pr = response.getWriter();
+			pr.println("Ciao da Servlet 1");
+			
 			RequestDispatcher reqDisp = request.getRequestDispatcher("Servlet2");
-			reqDisp.forward(request, response);
+			reqDisp.include(request, response);
+			//reqDisp.forward(request, response);
 		}
 		else{
 			RequestDispatcher reqDisp = request.getRequestDispatcher("login.html");
